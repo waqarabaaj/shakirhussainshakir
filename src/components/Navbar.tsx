@@ -77,19 +77,20 @@ export const Navbar: React.FC = () => {
         >
           <div
             style={{
-              width: 44,
-              height: 44,
-              borderRadius: 'var(--radius-sm)',
-              background: 'linear-gradient(135deg, var(--navy-card), var(--navy-surface))',
-              border: '1px solid rgba(197, 160, 89, 0.4)',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              color: 'var(--gold-light)',
-              boxShadow: 'var(--shadow-sm)'
+              width: 42,
+              height: 42,
+              borderRadius: '50%',
+              overflow: 'hidden',
+              border: '2px solid var(--gold-light)',
+              boxShadow: '0 0 12px rgba(197, 160, 89, 0.35)',
+              flexShrink: 0
             }}
           >
-            <GraduationCap size={22} />
+            <img 
+              src="/shakir-profile.jpeg" 
+              alt="Shakir Hussain Shakir" 
+              style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top' }} 
+            />
           </div>
           <div>
             <div style={{ fontFamily: 'var(--font-academic-seal)', fontSize: '1.05rem', fontWeight: 700, letterSpacing: '0.04em', color: 'var(--ivory-light)' }}>

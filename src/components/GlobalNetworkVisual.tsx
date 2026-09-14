@@ -9,7 +9,9 @@ import {
   Building2, 
   Sparkles,
   BookOpen,
-  Compass
+  Compass,
+  User,
+  ShieldCheck
 } from 'lucide-react';
 
 const NODES = [
@@ -23,27 +25,246 @@ const NODES = [
 
 export const GlobalNetworkVisual: React.FC = () => {
   const [activeNode, setActiveNode] = useState<string | null>(null);
-  const [viewMode, setViewMode] = useState<'network' | 'portrait'>('network');
+  // Default to portrait so the user's photo is immediately front and center!
+  const [viewMode, setViewMode] = useState<'portrait' | 'network'>('portrait');
 
   return (
-    <div style={{ position: 'relative', width: '100%', maxWidth: 520, height: 480, margin: '0 auto', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+    <div style={{ position: 'relative', width: '100%', maxWidth: 540, minHeight: 520, margin: '0 auto', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
       
       {/* Background Radiance */}
       <div 
         style={{
           position: 'absolute',
-          width: 380,
-          height: 380,
+          width: 420,
+          height: 420,
           borderRadius: '50%',
-          background: 'radial-gradient(circle, rgba(45, 163, 158, 0.15) 0%, rgba(197, 160, 89, 0.08) 50%, transparent 70%)',
-          filter: 'blur(35px)',
+          background: 'radial-gradient(circle, rgba(45, 163, 158, 0.2) 0%, rgba(197, 160, 89, 0.12) 50%, transparent 70%)',
+          filter: 'blur(40px)',
           pointerEvents: 'none'
         }}
       />
 
-      {viewMode === 'network' ? (
-        <div style={{ position: 'relative', width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-          
+      {viewMode === 'portrait' ? (
+        /* Academic Leader Official Portrait Showcase */
+        <motion.div
+          key="portrait-view"
+          initial={{ opacity: 0, scale: 0.94 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 0.94 }}
+          transition={{ duration: 0.5, ease: 'easeOut' }}
+          style={{
+            position: 'relative',
+            width: '100%',
+            maxWidth: 380,
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center'
+          }}
+        >
+          {/* Main Portrait Frame */}
+          <div
+            style={{
+              position: 'relative',
+              width: '100%',
+              height: 440,
+              borderRadius: 'var(--radius-lg)',
+              overflow: 'hidden',
+              border: '2px solid rgba(197, 160, 89, 0.45)',
+              boxShadow: '0 20px 50px rgba(0, 0, 0, 0.6), 0 0 35px rgba(197, 160, 89, 0.2)',
+              background: 'linear-gradient(145deg, #11223b, #070e18)'
+            }}
+          >
+            {/* Real Professional Profile Photograph */}
+            <img
+              src="/shakir-profile.jpeg"
+              alt="Shakir Hussain Shakir — Education Leader & Student Affairs Head"
+              style={{
+                width: '100%',
+                height: '100%',
+                objectFit: 'cover',
+                objectPosition: 'center top',
+                display: 'block'
+              }}
+            />
+
+            {/* Gradient Overlay for Academic Readability */}
+            <div
+              style={{
+                position: 'absolute',
+                inset: 0,
+                background: 'linear-gradient(180deg, rgba(7, 14, 24, 0.1) 0%, rgba(7, 14, 24, 0.2) 55%, rgba(7, 14, 24, 0.92) 100%)',
+                pointerEvents: 'none'
+              }}
+            />
+
+            {/* Bottom Caption Overlay */}
+            <div
+              style={{
+                position: 'absolute',
+                bottom: 0,
+                left: 0,
+                right: 0,
+                padding: '1.5rem',
+                zIndex: 5
+              }}
+            >
+              <div
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '0.4rem',
+                  padding: '0.25rem 0.65rem',
+                  background: 'rgba(30, 107, 104, 0.85)',
+                  backdropFilter: 'blur(8px)',
+                  border: '1px solid rgba(45, 163, 158, 0.4)',
+                  borderRadius: 'var(--radius-full)',
+                  fontSize: '0.72rem',
+                  fontWeight: 600,
+                  color: '#ffffff',
+                  marginBottom: '0.5rem',
+                  letterSpacing: '0.04em'
+                }}
+              >
+                <ShieldCheck size={12} />
+                <span>Verified Education Leader</span>
+              </div>
+
+              <h2
+                style={{
+                  fontFamily: 'var(--font-serif)',
+                  fontSize: '1.45rem',
+                  fontWeight: 700,
+                  color: 'var(--ivory-light)',
+                  lineHeight: 1.2,
+                  marginBottom: '0.25rem'
+                }}
+              >
+                Shakir Hussain Shakir
+              </h2>
+
+              <div
+                style={{
+                  fontSize: '0.86rem',
+                  color: 'var(--gold-light)',
+                  fontWeight: 600,
+                  lineHeight: 1.3
+                }}
+              >
+                Head Department of Student Affairs
+              </div>
+
+              <div
+                style={{
+                  fontSize: '0.75rem',
+                  color: 'var(--text-secondary)',
+                  marginTop: '0.25rem'
+                }}
+              >
+                PAK-TURK Maarif International Schools & Colleges
+              </div>
+            </div>
+          </div>
+
+          {/* Floating Achievement Badge 1 (Top Left) */}
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.3, duration: 0.5 }}
+            style={{
+              position: 'absolute',
+              top: 25,
+              left: -20,
+              padding: '0.55rem 0.95rem',
+              background: 'rgba(11, 23, 40, 0.92)',
+              backdropFilter: 'blur(10px)',
+              border: '1px solid rgba(197, 160, 89, 0.45)',
+              borderRadius: 'var(--radius-md)',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '0.55rem',
+              boxShadow: 'var(--shadow-md), 0 0 20px rgba(197, 160, 89, 0.15)',
+              zIndex: 10
+            }}
+          >
+            <div
+              style={{
+                width: 30,
+                height: 30,
+                borderRadius: '50%',
+                background: 'rgba(197, 160, 89, 0.18)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                color: 'var(--gold-light)'
+              }}
+            >
+              <GraduationCap size={16} />
+            </div>
+            <div>
+              <div style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--ivory-light)', lineHeight: 1.1 }}>
+                13,000+
+              </div>
+              <div style={{ fontSize: '0.68rem', color: 'var(--gold-light)', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
+                Students Mentored
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Floating Achievement Badge 2 (Bottom Right) */}
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.4, duration: 0.5 }}
+            style={{
+              position: 'absolute',
+              bottom: 60,
+              right: -20,
+              padding: '0.55rem 0.95rem',
+              background: 'rgba(11, 23, 40, 0.92)',
+              backdropFilter: 'blur(10px)',
+              border: '1px solid rgba(45, 163, 158, 0.45)',
+              borderRadius: 'var(--radius-md)',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '0.55rem',
+              boxShadow: 'var(--shadow-md), 0 0 20px rgba(45, 163, 158, 0.15)',
+              zIndex: 10
+            }}
+          >
+            <div
+              style={{
+                width: 30,
+                height: 30,
+                borderRadius: '50%',
+                background: 'rgba(30, 107, 104, 0.25)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                color: 'var(--teal-light)'
+              }}
+            >
+              <Globe size={16} />
+            </div>
+            <div>
+              <div style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--ivory-light)', lineHeight: 1.1 }}>
+                27 Campuses
+              </div>
+              <div style={{ fontSize: '0.68rem', color: 'var(--teal-light)', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
+                10 Major Cities
+              </div>
+            </div>
+          </motion.div>
+        </motion.div>
+      ) : (
+        /* Global Education Network View (With Shakir at center) */
+        <motion.div
+          key="network-view"
+          initial={{ opacity: 0, scale: 0.94 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 0.94 }}
+          transition={{ duration: 0.5, ease: 'easeOut' }}
+          style={{ position: 'relative', width: '100%', height: 480, display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+        >
           {/* Orbital SVG Rings & Thin Connection Lines */}
           <svg
             style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', pointerEvents: 'none' }}
@@ -54,10 +275,6 @@ export const GlobalNetworkVisual: React.FC = () => {
                 <stop offset="0%" stopColor="#2da39e" stopOpacity="0.4" />
                 <stop offset="50%" stopColor="#c5a059" stopOpacity="0.2" />
                 <stop offset="100%" stopColor="#2da39e" stopOpacity="0.1" />
-              </linearGradient>
-              <linearGradient id="lineGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stopColor="#c5a059" stopOpacity="0.6" />
-                <stop offset="100%" stopColor="#2da39e" stopOpacity="0.6" />
               </linearGradient>
             </defs>
 
@@ -84,7 +301,6 @@ export const GlobalNetworkVisual: React.FC = () => {
                     strokeWidth={isSelected ? 2 : 1}
                     strokeDasharray={isSelected ? 'none' : '4 3'}
                   />
-                  {/* Subtle pulsing particle along line */}
                   <circle
                     cx={(250 + x) / 2}
                     cy={(250 + y) / 2}
@@ -97,7 +313,7 @@ export const GlobalNetworkVisual: React.FC = () => {
             })}
           </svg>
 
-          {/* Central Academic Leadership Node */}
+          {/* Central Academic Leadership Node with Shakir's portrait thumbnail */}
           <motion.div
             initial={{ scale: 0.9 }}
             animate={{ scale: [0.97, 1.03, 0.97] }}
@@ -107,25 +323,39 @@ export const GlobalNetworkVisual: React.FC = () => {
               width: 130,
               height: 130,
               borderRadius: '50%',
-              background: 'radial-gradient(circle at 35% 35%, #183358, #0b1728)',
-              border: '2px solid rgba(197, 160, 89, 0.6)',
-              boxShadow: '0 0 40px rgba(197, 160, 89, 0.25), inset 0 0 20px rgba(45, 163, 158, 0.3)',
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-              justifyContent: 'center',
+              border: '3px solid var(--gold-light)',
+              boxShadow: '0 0 35px rgba(197, 160, 89, 0.35)',
+              overflow: 'hidden',
               zIndex: 10,
               cursor: 'pointer'
             }}
           >
-            <div style={{ color: 'var(--gold-light)', marginBottom: 4 }}>
-              <GraduationCap size={32} />
-            </div>
-            <div style={{ fontFamily: 'var(--font-academic-seal)', fontSize: '0.78rem', fontWeight: 700, letterSpacing: '0.08em', color: 'var(--ivory-light)', textAlign: 'center' }}>
-              GLOBAL
-            </div>
-            <div style={{ fontSize: '0.65rem', color: 'var(--teal-light)', fontWeight: 600, letterSpacing: '0.04em' }}>
-              EDUCATION
+            <img
+              src="/shakir-profile.jpeg"
+              alt="Shakir Hussain Shakir"
+              style={{
+                width: '100%',
+                height: '100%',
+                objectFit: 'cover',
+                objectPosition: 'center top'
+              }}
+            />
+            <div
+              style={{
+                position: 'absolute',
+                bottom: 0,
+                left: 0,
+                right: 0,
+                padding: '0.2rem 0',
+                background: 'rgba(7, 14, 24, 0.85)',
+                textAlign: 'center',
+                fontSize: '0.65rem',
+                fontWeight: 700,
+                color: 'var(--gold-light)',
+                letterSpacing: '0.04em'
+              }}
+            >
+              SHAKIR
             </div>
           </motion.div>
 
@@ -142,7 +372,7 @@ export const GlobalNetworkVisual: React.FC = () => {
                 key={node.id}
                 initial={{ opacity: 0, scale: 0 }}
                 animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 0.2 + i * 0.1, duration: 0.5 }}
+                transition={{ delay: 0.1 + i * 0.08, duration: 0.4 }}
                 onMouseEnter={() => setActiveNode(node.id)}
                 onMouseLeave={() => setActiveNode(null)}
                 style={{
@@ -193,121 +423,63 @@ export const GlobalNetworkVisual: React.FC = () => {
               </motion.div>
             );
           })}
-        </div>
-      ) : (
-        /* Classical Academic Leader Portrait Placeholder */
-        <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          style={{
-            width: 320,
-            height: 380,
-            borderRadius: 'var(--radius-md)',
-            background: 'linear-gradient(145deg, #11223b, #091322)',
-            border: '2px solid rgba(197, 160, 89, 0.4)',
-            boxShadow: 'var(--shadow-lg), 0 0 35px rgba(197, 160, 89, 0.15)',
-            position: 'relative',
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            justifyContent: 'center',
-            padding: '2rem',
-            textAlign: 'center'
-          }}
-        >
-          {/* Classical Academic Arch Frame */}
-          <div
-            style={{
-              width: 140,
-              height: 140,
-              borderRadius: '50%',
-              background: 'radial-gradient(circle, #19355c, #0d1e35)',
-              border: '2px solid rgba(45, 163, 158, 0.5)',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              color: 'var(--gold-light)',
-              marginBottom: '1.25rem',
-              boxShadow: 'inset 0 0 25px rgba(0,0,0,0.5)'
-            }}
-          >
-            <Compass size={64} strokeWidth={1.5} />
-          </div>
-
-          <div style={{ fontFamily: 'var(--font-serif)', fontSize: '1.35rem', color: 'var(--ivory-light)', fontWeight: 600 }}>
-            Shakir Hussain Shakir
-          </div>
-          <div style={{ fontSize: '0.85rem', color: 'var(--gold-light)', fontWeight: 500, marginTop: '0.25rem' }}>
-            Academic Leader & Strategist
-          </div>
-          <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', marginTop: '0.75rem', lineHeight: 1.5, maxWidth: 240 }}>
-            Head of Student Affairs, PAK-TURK Maarif International Schools & Colleges
-          </div>
-
-          <div 
-            style={{ 
-              marginTop: '1.25rem',
-              padding: '0.35rem 0.85rem',
-              background: 'rgba(30, 107, 104, 0.2)',
-              border: '1px solid rgba(45, 163, 158, 0.35)',
-              borderRadius: 'var(--radius-full)',
-              fontSize: '0.75rem',
-              color: 'var(--teal-light)',
-              display: 'flex',
-              alignItems: 'center',
-              gap: '0.4rem'
-            }}
-          >
-            <Sparkles size={13} />
-            <span>Official Educator Profile</span>
-          </div>
         </motion.div>
       )}
 
-      {/* Mode Switcher pill at bottom right */}
+      {/* Mode Switcher pill at bottom */}
       <div
         style={{
           position: 'absolute',
-          bottom: 0,
+          bottom: -15,
           right: '50%',
           transform: 'translateX(50%)',
           display: 'flex',
-          gap: '0.5rem',
+          gap: '0.4rem',
           background: 'rgba(11, 23, 40, 0.95)',
-          padding: '0.3rem',
+          backdropFilter: 'blur(10px)',
+          padding: '0.35rem',
           borderRadius: 'var(--radius-full)',
-          border: '1px solid var(--navy-border)',
+          border: '1px solid rgba(197, 160, 89, 0.3)',
           zIndex: 30,
           boxShadow: 'var(--shadow-md)'
         }}
       >
         <button
-          onClick={() => setViewMode('network')}
-          style={{
-            padding: '0.3rem 0.75rem',
-            borderRadius: 'var(--radius-full)',
-            fontSize: '0.75rem',
-            fontWeight: 600,
-            background: viewMode === 'network' ? 'var(--teal-primary)' : 'transparent',
-            color: viewMode === 'network' ? '#fff' : 'var(--text-muted)',
-            transition: 'all 0.2s ease'
-          }}
-        >
-          Education Network
-        </button>
-        <button
           onClick={() => setViewMode('portrait')}
           style={{
-            padding: '0.3rem 0.75rem',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '0.35rem',
+            padding: '0.4rem 0.9rem',
             borderRadius: 'var(--radius-full)',
-            fontSize: '0.75rem',
+            fontSize: '0.78rem',
             fontWeight: 600,
-            background: viewMode === 'portrait' ? 'var(--gold-dark)' : 'transparent',
-            color: viewMode === 'portrait' ? '#fff' : 'var(--text-muted)',
+            background: viewMode === 'portrait' ? 'linear-gradient(135deg, var(--gold-dark), var(--gold-primary))' : 'transparent',
+            color: viewMode === 'portrait' ? '#ffffff' : 'var(--text-muted)',
             transition: 'all 0.2s ease'
           }}
         >
-          Academic Seal
+          <User size={13} />
+          <span>Profile Photo</span>
+        </button>
+
+        <button
+          onClick={() => setViewMode('network')}
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '0.35rem',
+            padding: '0.4rem 0.9rem',
+            borderRadius: 'var(--radius-full)',
+            fontSize: '0.78rem',
+            fontWeight: 600,
+            background: viewMode === 'network' ? 'var(--teal-primary)' : 'transparent',
+            color: viewMode === 'network' ? '#ffffff' : 'var(--text-muted)',
+            transition: 'all 0.2s ease'
+          }}
+        >
+          <Globe size={13} />
+          <span>Education Network</span>
         </button>
       </div>
 

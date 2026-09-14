@@ -42,23 +42,31 @@ export const Hero: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: 'easeOut' }}
           >
-            {/* Academic Institution Tag */}
+            {/* Academic Institution Tag with Portrait Avatar */}
             <div
               style={{
                 display: 'inline-flex',
                 alignItems: 'center',
-                gap: '0.6rem',
-                padding: '0.4rem 1rem',
-                background: 'rgba(17, 34, 59, 0.85)',
-                border: '1px solid rgba(197, 160, 89, 0.35)',
+                gap: '0.65rem',
+                padding: '0.35rem 1rem 0.35rem 0.45rem',
+                background: 'rgba(17, 34, 59, 0.9)',
+                border: '1px solid rgba(197, 160, 89, 0.4)',
                 borderRadius: 'var(--radius-full)',
                 marginBottom: '1.5rem',
                 boxShadow: 'var(--shadow-sm)'
               }}
             >
-              <div style={{ color: 'var(--gold-light)' }}>
-                <GraduationCap size={16} />
-              </div>
+              <img
+                src="/shakir-profile.jpeg"
+                alt="Shakir Hussain Shakir"
+                style={{
+                  width: 26,
+                  height: 26,
+                  borderRadius: '50%',
+                  objectFit: 'cover',
+                  border: '1.5px solid var(--gold-light)'
+                }}
+              />
               <span style={{ fontSize: '0.82rem', fontWeight: 600, letterSpacing: '0.04em', color: 'var(--ivory-base)' }}>
                 PAK-TURK Maarif International Schools & Colleges
               </span>

@@ -148,18 +148,20 @@ export const AboutEducator: React.FC = () => {
           <div style={{ display: 'flex', gap: '1.5rem', alignItems: 'flex-start' }}>
             <div
               style={{
-                width: 48,
-                height: 48,
+                width: 52,
+                height: 52,
                 borderRadius: '50%',
-                background: 'rgba(197, 160, 89, 0.15)',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                color: 'var(--gold-light)',
+                overflow: 'hidden',
+                border: '2px solid var(--gold-light)',
+                boxShadow: '0 0 15px rgba(197, 160, 89, 0.3)',
                 flexShrink: 0
               }}
             >
-              <Quote size={24} />
+              <img
+                src="/shakir-profile.jpeg"
+                alt="Shakir Hussain Shakir"
+                style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top' }}
+              />
             </div>
 
             <div>
